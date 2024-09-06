@@ -1,0 +1,22 @@
+{
+  "name": "laboratory",
+  "version": "1.0.0",
+  "description": "실험실",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.5.4",
+    "jest": "^29.7.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
