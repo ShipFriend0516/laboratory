@@ -1,0 +1,99 @@
+/* discord-style.css */
+
+:root {
+  --background-primary: #36393f;
+  --background-secondary: #2f3136;
+  --background-tertiary: #202225;
+  --text-normal: #dcddde;
+  --text-muted: #72767d;
+  --brand-color: #7289da;
+  --interactive-normal: #b9bbbe;
+  --interactive-hover: #dcddde;
+  --interactive-active: #ffffff;
+}
+
+body {
+  font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: var(--background-tertiary);
+  color: var(--text-normal);
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.draggable-items,
+.drop-zone {
+  width: 300px;
+  min-height: 400px;
+  background-color: var(--background-secondary);
+  border-radius: 5px;
+  padding: 16px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.item {
+  background-color: var(--background-primary);
+  border: 1px solid var(--interactive-normal);
+  border-radius: 3px;
+  padding: 10px 16px;
+  margin: 8px 0;
+  cursor: grab;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.item:hover {
+  background-color: var(--background-secondary);
+  border-color: var(--interactive-hover);
+}
+
+.item.place {
+  opacity: 0.5;
+  transition: 0.1s;
+}
+
+.drop-zone {
+  background-color: var(--background-secondary);
+  border: 2px dashed var(--interactive-normal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-muted);
+}
+
+.drop-zone p {
+  font-size: 18px;
+}
+
+.drop-zone.drag-over {
+  background-color: rgba(114, 137, 218, 0.1);
+  border-color: var(--brand-color);
+}
+
+h2 {
+  color: var(--text-normal);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--background-tertiary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--interactive-normal);
+}
