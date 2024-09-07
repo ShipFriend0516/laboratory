@@ -22,32 +22,23 @@ const dragOverHandler = (e: DragEvent) => {
 };
 
 const renderPreview = (e: DragEvent) => {
-  let raf = null;
+  const target = e.target as HTMLElement;
+  const closest = target.closest(".drop-zone");
+  if (closest) {
+    const elements = [...closest.querySelectorAll(".item")] as HTMLElement[];
+    const index = findIndex(elements, e.y);
+    console.log("index:" + index);
+    const preview = document.querySelector(".place") as HTMLElement;
 
-  if (raf !== null) {
-    cancelAnimationFrame(raf);
-  }
-
-  raf = requestAnimationFrame(() => {
-    const target = e.target as HTMLElement;
-    const closest = target.closest(".drop-zone");
-    if (closest) {
-      const elements = [...closest.querySelectorAll(".item")] as HTMLElement[];
-      const index = findIndex(elements, e.y);
-      console.log(index);
-      const preview = document.querySelector(".place") as HTMLElement;
-
-      // 미리보기 넣기
-      if (preview instanceof HTMLElement) {
-        if (elements.length - 1 === index) {
-          closest.appendChild(preview);
-        } else {
-          closest.insertBefore(preview, closest.children[index] || null);
-        }
+    // 미리보기 넣기
+    if (preview instanceof HTMLElement) {
+      if (elements.length - 1 === index) {
+        closest.appendChild(preview);
+      } else {
+        closest.insertBefore(preview, closest.children[index] || null);
       }
     }
-    raf = null;
-  });
+  }
 };
 
 const dropHandler = (e: DragEvent) => {
