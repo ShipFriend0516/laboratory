@@ -30,42 +30,49 @@ body {
 .drop-zone {
   width: 300px;
   min-height: 400px;
-  background-color: var(--background-secondary);
+  background-color: var(--brand-color);
   border-radius: 5px;
   padding: 16px;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 .item {
-  background-color: var(--background-primary);
+  background-color: var(--interactive-active);
   border: 1px solid var(--interactive-normal);
   border-radius: 3px;
-  padding: 10px 16px;
+  padding: 1em 2em;
   margin: 8px 0;
   cursor: grab;
+  color: black;
   transition: background-color 0.2s ease, border-color 0.2s ease;
+  z-index: 2;
 }
 
 .item:hover {
-  background-color: var(--background-secondary);
   border-color: var(--interactive-hover);
+  box-shadow: 1px 1px 2px gray;
 }
 
 .item.place {
   opacity: 0.5;
-  transition: 0.1s;
+  /* transition: 0.1s; */
 }
 
 .drop-zone {
   background-color: var(--background-secondary);
   border: 2px dashed var(--interactive-normal);
+  align-items: stretch;
   display: flex;
+  flex-direction: column;
+  gap: 3px;
   justify-content: center;
   align-items: center;
   color: var(--text-muted);
 }
 
 .drop-zone p {
+  position: absolute;
+  z-index: 1;
   font-size: 18px;
 }
 
