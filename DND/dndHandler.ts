@@ -1,3 +1,5 @@
+import { throttle } from "../utils/performance";
+
 const dragStartHandler = (e: DragEvent) => {
   const draggedItem = e.target as HTMLElement;
   if (draggedItem) {
@@ -15,24 +17,29 @@ const dragEndHandler = (e: DragEvent) => {
 
 const dragOverHandler = (e: DragEvent) => {
   e.preventDefault();
+  e.stopPropagation();
+  throttledDragOver(e);
+};
 
-  // e.stopPropagation();
-
+const throttledDragOver = throttle((e: DragEvent) => {
   const target = e.target as HTMLElement;
   const closest = target.closest(".drop-zone");
   if (closest) {
     const elements = [...closest.querySelectorAll(".item")] as HTMLElement[];
     const index = findIndex(elements, e.y);
     console.log(index);
+    const preview = document.querySelector(".place") as HTMLElement;
 
     // 미리보기 넣기
-    if (elements.length - 1 === index) {
-      closest.insertBefore(document.querySelector(".place"), null);
-    } else {
-      closest.insertBefore(document.querySelector(".place"), closest.children[index] || null);
+    if (preview instanceof HTMLElement) {
+      if (elements.length - 1 === index) {
+        closest.appendChild(preview);
+      } else {
+        closest.insertBefore(preview, closest.children[index] || null);
+      }
     }
   }
-};
+}, 16);
 
 const dropHandler = (e: DragEvent) => {
   e.preventDefault();
