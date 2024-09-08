@@ -15,15 +15,10 @@ const dragEndHandler = (e: DragEvent) => {
   }
 };
 
+let raf: number | null = null;
 const dragOverHandler = (e: DragEvent) => {
   e.preventDefault();
   e.stopPropagation();
-  renderPreview(e);
-};
-
-const renderPreview = (e: DragEvent) => {
-  let raf = null;
-
   if (raf !== null) {
     cancelAnimationFrame(raf);
   }
@@ -49,6 +44,8 @@ const renderPreview = (e: DragEvent) => {
     raf = null;
   });
 };
+
+// const renderPreview = (e: DragEvent) => {};
 
 const dropHandler = (e: DragEvent) => {
   e.preventDefault();
